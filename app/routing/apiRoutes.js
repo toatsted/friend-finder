@@ -1,16 +1,9 @@
 module.exports = function(app, friends){
-	app.get("/api/friends", (req, res) => {
+	app.get("/api/friends", (data) => {
+		return res.json(friends);
+	})	
 
-		friends = [
-			{
-				name: "idiot1",
-				age: 20
-			},{
-				name: "idiot2",
-				age: 21
-			}
-		]
-
-		res.json(friends);
+	app.post("/api/friends", (data) => {
+				
 	})
 }
