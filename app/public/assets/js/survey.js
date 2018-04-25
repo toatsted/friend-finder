@@ -2,7 +2,7 @@ $(() => {
 	$("#submit").on("click", (e) => {
 		e.preventDefault();
 
-		$.post("/api/friends", {
+		let userData = {
 			name: $("#name").val().trim(),
 			photo: $("#photo").val(),
 			scores: [
@@ -16,6 +16,29 @@ $(() => {
 			   $("#q8").val(),
 			   $("#q9").val(),
 			   $("#q10").val()]
-		}, (data) => {})
+		};
+
+		// $.post("/api/friends", userData, (data) => {
+		// 	$("#matchName").text(data.name);
+		// 	$("#matchImg").attr(src, data.photo);
+		// 	alert("asdf");
+		// })
+
+		$.ajax({
+			type: "POST",
+			url: "/api/friends",
+			data: userData,
+			dataType: "json",
+			complete: (data) => {
+				$("#matchName").text(data.name);
+				$("#matchImg").attr(src, data.photo);
+
+				$("#matchModal").modal();
+			}
+		});
+
+		$.get("/api/friends", (data) => {
+			console.log(data);
+		})
 	})
 });
