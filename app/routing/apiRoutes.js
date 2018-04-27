@@ -14,7 +14,7 @@ module.exports = function(app, friends){
 			compare.push(score);
 		})
 
-		return friends[compare.indexOf(Math.min.apply(Math, compare))];
+		// console.log(friends[compare.indexOf(Math.min.apply(Math, compare))]);
 
 		friends.push(user);
 	})
